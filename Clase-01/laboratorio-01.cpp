@@ -13,46 +13,46 @@ using std::endl;
 int main()
 {
     int dias{0};
-    int zombies{5}; // Iniciamos la observación con 5 zombies [141]
+    int zombies{5}; // Iniciamos la observación con 5 zombies
 
     cout << "==================================================" << endl;
     cout << "   MONITOREO DE INFECCIÓN ZOMBIE: LABORATORIO 1" << endl;
     cout << "==================================================" << endl;
 
     cout << "Ingrese los dias de observacion: ";
-    cin >> dias; // [103, 147]
+    cin >> dias;
 
-    // Validacion basica de entrada [158]
+    // Validacion basica de entrada
     if (dias <= 0)
     {
         cout << "[ERROR] Los dias de observacion deben ser mayores a cero." << endl;
-        return 1; // Terminar programa con codigo de error [137]
+        return 1; // Terminar programa con codigo de error
     }
 
     cout << "\nIniciando reporte diario..." << endl;
 
-    // Bucle de simulacion temporal [201]
+    // Bucle de simulacion temporal
     for (int dia{1}; dia <= dias; ++dia)
     {
 
         // =========================================================================
-        // // TODO 1: Cada dia se suman exactamente 3 nuevos zombis a la horda [144].
+        // TODO 1: Cada dia se suman exactamente 3 nuevos zombis a la horda.
         // Escribe una sola linea de codigo para incrementar 'zombies' en 3.
         // =========================================================================
-        /* Tu linea de codigo aqui (LINEA 1) */
+        /* Tu linea de codigo aqui*/
 
         cout << "Dia " << dia << ": " << zombies << " zombies detectados en el area." << endl;
 
         // =========================================================================
-        // // TODO 2: Si el numero de 'zombies' supera el limite critico de 20 [148],
+        // TODO 2: Si el numero de 'zombies' supera el limite critico de 20,
         // imprime una alerta usando un condicional 'if'. Completa la condicion:
         // =========================================================================
         if (false)
-        { // <-- REEMPLAZA EL 'false' CON LA CONDICION CORRECTA (LINEA 2)
+        { // <-- REEMPLAZA EL 'false' CON LA CONDICION CORRECTA
             cout << "  [ALERTA]: ¡Peligro critico! Horda aproximandose al refugio." << endl;
         }
     }
 
     cout << "\nSimulacion concluida." << endl;
-    return 0; // [137]
+    return 0;
 }
