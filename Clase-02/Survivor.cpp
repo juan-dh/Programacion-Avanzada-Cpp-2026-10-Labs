@@ -4,10 +4,26 @@
 // Estudiante: [Tu Nombre]
 // Profesor: Juan Diego Haro (jharo@asig.com.ec)
 
-include <iostream>
-include <string>
+#include <iostream>
+#include <string>
+
+class Survivor{
+private:
+    std::string name;
+    int health;
+
+    void displayInfo() {
+        std::cout << "Name: " << name << ", Health: " << health << std::endl;
+    }
+        
+};
 
 int main(){
-    // Su código aqui
+
+    Survivor survivor1;
+    survivor1.name = "Martin";
+    survivor1.health = 100;
+    survivor1.displayInfo();
+
     return 0;
 }
