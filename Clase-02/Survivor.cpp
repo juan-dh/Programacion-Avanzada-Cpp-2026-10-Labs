@@ -12,18 +12,18 @@ private:
     std::string name;
     int health;
 
-    void displayInfo() {
-        std::cout << "Name: " << name << ", Health: " << health << std::endl;
+    void displayCard() {
+        std::cout << "Nombre: " << name << "| Salud: " << health << " HP \n"<< std::endl;
     }
         
 };
 
 int main(){
 
-    Survivor survivor1;
-    survivor1.name = "Martin";
-    survivor1.health = 100;
-    survivor1.displayInfo();
+    Survivor player;
+    player.name = "Martin";
+    player.health = 100;
+    player.displayCard();
 
     return 0;
 }
