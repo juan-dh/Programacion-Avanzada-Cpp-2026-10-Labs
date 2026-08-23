@@ -1,58 +1,14 @@
 // USFQ - Colegio de Ciencias e Ingeniería
 // CMP-2702: Programación Avanzada en C++
-// Laboratorio 1 (Código Base): Monitoreo de Infección Zombie
+// Laboratorio 1
 // Estudiante: [Tu Nombre]
 // Profesor: Juan Diego Haro (jharo@asig.com.ec)
 
-#include <iostream>
+#include <iostream> // Habilita la salida de datos a la pantalla
 
-using std::cin;
-using std::cout;
-using std::endl;
+// La funcion main inicia la ejecucion del programa
+int main() {
+   std::cout << "Welcome to C++!\n"; // Despliega un mensaje
 
-int main()
-{
-    int dias{0};
-    int zombies{5}; // Iniciamos la observación con 5 zombies
-
-    cout << "==================================================" << endl;
-    cout << "   MONITOREO DE INFECCIÓN ZOMBIE: LABORATORIO 1" << endl;
-    cout << "==================================================" << endl;
-
-    cout << "Ingrese los dias de observacion: ";
-    cin >> dias;
-
-    // Validacion basica de entrada
-    if (dias <= 0)
-    {
-        cout << "[ERROR] Los dias de observacion deben ser mayores a cero." << endl;
-        return 1; // Terminar programa con codigo de error
-    }
-
-    cout << "\nIniciando reporte diario..." << endl;
-
-    // Bucle de simulacion temporal
-    for (int dia{1}; dia <= dias; ++dia)
-    {
-
-        // =========================================================================
-        // TODO 1: Cada dia se suman exactamente 3 nuevos zombis a la horda.
-        // Escribe una sola linea de codigo para incrementar 'zombies' en 3.
-        // =========================================================================
-        /* Tu linea de codigo aqui*/
-
-        cout << "Dia " << dia << ": " << zombies << " zombies detectados en el area." << endl;
-
-        // =========================================================================
-        // TODO 2: Si el numero de 'zombies' supera el limite critico de 20,
-        // imprime una alerta usando un condicional 'if'. Completa la condicion:
-        // =========================================================================
-        if (false)
-        { // <-- REEMPLAZA EL 'false' CON LA CONDICION CORRECTA
-            cout << "  [ALERTA]: ¡Peligro critico! Horda aproximandose al refugio." << endl;
-        }
-    }
-
-    cout << "\nSimulacion concluida." << endl;
-    return 0;
+   return 0; // Indica que el programa finalizo exitosamente
 }
