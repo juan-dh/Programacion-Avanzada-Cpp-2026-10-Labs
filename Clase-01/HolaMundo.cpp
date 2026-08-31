@@ -1,6 +1,6 @@
+// HolaMundo.cpp
 // USFQ - Colegio de Ciencias e Ingeniería
-// CMP-2702: Programación Avanzada en C++
-// Laboratorio 1
+// CMP-2102: Programación Avanzada en C++
 // Estudiante: [Tu Nombre]
 // Profesor: Juan Diego Haro (jharo@asig.com.ec)
 

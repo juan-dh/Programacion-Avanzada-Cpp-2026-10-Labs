@@ -1,29 +1,42 @@
+//Encapsulamiento.cpp
 // USFQ - Colegio de Ciencias e Ingeniería
-// CMP-2702: Programación Avanzada en C++
-// Laboratorio 2
+// CMP-2102: Programación Avanzada en C++
 // Estudiante: [Tu Nombre]
 // Profesor: Juan Diego Haro (jharo@asig.com.ec)
 
 #include <iostream>
 #include <string>
 
-class Survivor{
+class Survivor {
 private:
     std::string name;
-    int health;
+    int health{100};
 
-    void displayCard() {
-        std::cout << "Nombre: " << name << "| Salud: " << health << " HP \n"<< std::endl;
+public:
+    void setName(std::string newName) {
+        name = newName;
     }
-        
+
+    void setHealth(int healthValue) {
+        health = healthValue;
+    }
+
+    std::string getName() const { return name; }
+    int getHealth() const { return health; }
+
+    void displayCard() const {
+        std::cout << "Superviviente: " << name << " | Salud: " << health << " HP\n";
+    }
 };
 
-int main(){
-
+int main() {
     Survivor player;
-    player.name = "Martin";
-    player.health = 100;
-    player.displayCard();
+    
+    player.setName("Ellie");
+    player.setHealth(24);
 
+    player.displayCard();
+    
+    std::cout << player.getName(); // Uso del método getName
     return 0;
 }
