@@ -1,1 +1,2 @@
-# Programacion Avanzada en C++
+# Programación Avanzada en C++
+Profesor: Juan Diego Haro
