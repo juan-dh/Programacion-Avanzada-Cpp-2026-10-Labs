@@ -1,4 +1,4 @@
-// SobrecargarFunciones_student.cpp
+// SobrecargarFunciones.cpp
 // USFQ - Colegio de Ciencias e Ingeniería
 // CMP-2102: Programación Avanzada en C++
 // Estudiante: [Tu Nombre]
@@ -41,20 +41,20 @@ public:
     // FAMILIA DE MÉTODOS SOBRECARGADOS: fight()
     // ==========================================
 
-    // TODO: Sobrecarga 1 - Combate desarmado (sin parametros, aplica 15 de dano)
+    // Sobrecarga 1: Combate basico cuerpo a cuerpo (manos desnudas)
     inline void fight() {
         std::cout << "[Combate] " << name << " pelea cuerpo a cuerpo desarmado.\n";
-        applyDamage( /* TODO: 15 */ );
+        applyDamage(15); // Recibe dano de respuesta por forcejeo
     }
 
-    // TODO: Sobrecarga 2 - Combate con arma blanca (meleeWeapon, bonusDamage)
+    // Sobrecarga 2: Combate con arma blanca o de impacto
     inline void fight(const std::string& meleeWeapon, int bonusDamage) {
         std::cout << "[Combate] " << name << " ataca con " << meleeWeapon 
                   << " infligiendo +" << bonusDamage << " de impacto.\n";
-        applyDamage( /* TODO: 5 */ );
+        applyDamage(5); // Menor dano recibido gracias al alcance del arma
     }
 
-    // TODO: Sobrecarga 3 - Combate a distancia con arma de fuego (firearm, bullets, accuracy)
+    // Sobrecarga 3: Combate con arma de fuego (usa municion y distancia)
     inline void fight(const std::string& firearm, int bullets, double accuracy) {
         std::cout << "[Combate Distancia] " << name << " dispara " << firearm 
                   << " (" << bullets << " balas) con precision de " << (accuracy * 100) << "%.\n";
@@ -71,18 +71,15 @@ int main() {
     ellie.displayCard();
 
     std::cout << "\n>>> Ronda 1: Ataque sorpresa cercano <<<\n";
-    // TODO: Invocar Sobrecarga 1 (sin argumentos)
-    ellie.fight( /* TODO */ );
+    ellie.fight(); // Invoca Sobrecarga 1
     ellie.displayCard();
 
     std::cout << "\n>>> Ronda 2: Encuentra un machete <<<\n";
-    // TODO: Invocar Sobrecarga 2 ("Machete militar", 30)
-    ellie.fight( /* TODO */ );
+    ellie.fight("Machete militar", 30); // Invoca Sobrecarga 2
     ellie.displayCard();
 
     std::cout << "\n>>> Ronda 3: Apoyo de francotirador <<<\n";
-    // TODO: Invocar Sobrecarga 3 ("Rifle de caza", 2, 0.95)
-    ellie.fight( /* TODO */ );
+    ellie.fight("Rifle de caza", 2, 0.95); // Invoca Sobrecarga 3
     ellie.displayCard();
 
     return 0;

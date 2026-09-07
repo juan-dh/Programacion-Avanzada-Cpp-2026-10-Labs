@@ -1,4 +1,4 @@
-// Enums_student.cpp
+// Enums.cpp
 // USFQ - Colegio de Ciencias e Ingeniería
 // CMP-2102: Programación Avanzada en C++
 // Estudiante: [Tu Nombre]
@@ -12,37 +12,29 @@ enum class HealthState {
     Healthy,
     Infected,
     Zombie,
-    // TODO: Agregar el estado Dead
-    
+    Dead
 };
 
 class Human {
 private:
     std::string name;
     int health{100};
-    // TODO: Definir el atributo 'state' inicializado en HealthState::Healthy
-    HealthState state{ /* TODO */ };
+    HealthState state{HealthState::Healthy}; // Estado con enum class
 
 public:
-    // TODO: Completar el parametro por defecto y la inicializacion de 'state'
-    Human(const std::string& nameVal, int healthVal, HealthState stateVal = /* TODO: HealthState::Healthy */)
-        : name{nameVal}, health{healthVal}, state{ /* TODO: stateVal */ } {
+    Human(const std::string& nameVal, int healthVal, HealthState stateVal = HealthState::Healthy)
+        : name{nameVal}, health{healthVal}, state{stateVal} {
         if (health <= 0) {
             health = 0;
-            // TODO: Asignar HealthState::Dead
-            state = /* TODO */;
+            state = HealthState::Dead;
         }
     }
 
-    // TODO: Completar el setter
     void setState(HealthState newState) {
-        state = /* TODO */;
+        state = newState;
     }
 
-    // TODO: Completar el tipo de retorno
-    /* TODO */ getState() const { 
-        return state; 
-    }
+    HealthState getState() const { return state; }
 
     // Metodo auxiliar para convertir el enum class a texto representativo
     std::string getStateString() const {
@@ -50,8 +42,7 @@ public:
             case HealthState::Healthy:  return "Saludable";
             case HealthState::Infected: return "Infectado";
             case HealthState::Zombie:   return "Zombificado";
-            // TODO: Agregar caso para Dead que retorne "Muerto"
-            case /* TODO */:            return "Muerto";
+            case HealthState::Dead:     return "Muerto";
             default:                    return "Desconocido";
         }
     }
@@ -62,14 +53,11 @@ public:
 };
 
 int main() {
-    // TODO: Instanciar a Joel con HealthState::Healthy
-    Human joel{"Joel Miller", 85, /* TODO */};
+    Human joel{"Joel Miller", 85, HealthState::Healthy};
     joel.displayCard();
 
     std::cout << "\n¡Joel ha sido mordido por un Zombie!\n";
-
-    // TODO: Cambiar el estado de Joel a HealthState::Infected
-    joel.setState( /* TODO */ );
+    joel.setState(HealthState::Infected);
     joel.displayCard();
 
     return 0;

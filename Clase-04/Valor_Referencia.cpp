@@ -7,13 +7,13 @@
 #include <iostream>
 #include <string>
 
-class Survivor {
+class Human {
 private:
     std::string name;
     int health{100};
 
 public:
-    Survivor(std::string nameVal, int healthVal)
+    Human(std::string nameVal, int healthVal)
         : name{nameVal}, health{healthVal} {}
 
     void takeDamage(int amount) {
@@ -30,26 +30,26 @@ public:
     int getHealth() const { return health; }
 
     void displayCard() const {
-        std::cout << "Superviviente: " << name << " | Salud: " << health << " HP\n";
+        std::cout << "Humano: " << name << " | Salud: " << health << " HP\n";
     }
 };
 
 // Funcion que recibe por VALOR (copia)
-void applyZombieBiteByValue(Survivor s) {
+void applyZombieBiteByValue(Human entity) {
     std::cout << "[Por Valor] Aplicando mordida de 40 HP a la copia...\n";
-    s.takeDamage(40);
-    std::cout << "[Por Valor] Salud dentro de la funcion: " << s.getHealth() << " HP\n";
+    entity.takeDamage(40);
+    std::cout << "[Por Valor] Salud dentro de la funcion: " << entity.getHealth() << " HP\n";
 }
 
 // Funcion que recibe por REFERENCIA (alias)
-void applyZombieBiteByReference(Survivor& s) {
+void applyZombieBiteByReference(Human& entity) {
     std::cout << "[Por Referencia] Aplicando mordida de 40 HP al original...\n";
-    s.takeDamage(40);
-    std::cout << "[Por Referencia] Salud dentro de la funcion: " << s.getHealth() << " HP\n";
+    entity.takeDamage(40);
+    std::cout << "[Por Referencia] Salud dentro de la funcion: " << entity.getHealth() << " HP\n";
 }
 
 int main() {
-    Survivor ellie{"Ellie", 100};
+    Human ellie{"Ellie", 100};
 
     std::cout << "--- ESTADO INICIAL ---\n";
     ellie.displayCard();

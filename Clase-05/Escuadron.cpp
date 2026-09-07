@@ -1,4 +1,4 @@
-// Escuadron_student.cpp
+// Escuadron.cpp
 // USFQ - Colegio de Ciencias e Ingeniería
 // CMP-2102: Programación Avanzada en C++
 // Estudiante: [Tu Nombre]
@@ -49,11 +49,13 @@ public:
         }
     }
 
+    // Sobrecarga 1: Combate cuerpo a cuerpo (desarmado)
     inline void fight() {
         std::cout << " -> " << name << " pelea cuerpo a cuerpo desarmado.\n";
         applyDamage(15);
     }
 
+    // Sobrecarga 2: Combate con arma blanca
     inline void fight(const std::string& weapon, int bonus) {
         std::cout << " -> " << name << " ataca con " << weapon << " (+" << bonus << " dano).\n";
         applyDamage(5);
@@ -76,34 +78,27 @@ public:
 
 int main() {
     // Creacion y gestion dinamica del escuadron con std::vector
-    // TODO: Declarar el std::vector de tipo Human llamado 'escuadron'
-    std::vector< /* TODO */ > escuadron;
-
-    // TODO: Agregar entidades humanas al escuadron con .push_back()
+    std::vector<Human> escuadron;
     escuadron.push_back(Human{"Ellie Williams", 90, HealthState::Healthy});
     escuadron.push_back(Human{"Joel Miller", 45, HealthState::Healthy});
     escuadron.push_back(Human{"Tommy Miller", 70, HealthState::Healthy});
-    // TODO: Agregar a Tess ("Tess Servopoulos", 30, HealthState::Infected)
-    escuadron.push_back(Human{ /* TODO */ });
+    escuadron.push_back(Human{"Tess Servopoulos", 30, HealthState::Infected});
 
-    // Estadio inicial del escuadron
+    // Estado inicial del escuadron
     std::cout << "=== ESCUADRON INICIAL (Total: " << escuadron.size() << ") ===\n";
-    // TODO: Recorrer el escuadron por referencia constante para solo lectura
-    for ( /* TODO: const auto& entity */ : escuadron) {
+    for (const auto& entity : escuadron) {
         entity.displayCard();
     }
 
     // Simulacion de combate con metodos sobrecargados
     std::cout << "\n=== EMBOSCADA DE INFECTADOS ===\n";
-    // TODO: Ellie (posicion 0) ataca con Navaja (+20 dano) y Joel (posicion 1) pelea desarmado
-    escuadron[0].fight( /* TODO: "Navaja", 20 */ );
-    escuadron[1].fight( /* TODO */ );
+    escuadron[0].fight("Navaja", 20); // Sobrecarga 2
+    escuadron[1].fight();             // Sobrecarga 1
 
     // Atencion medica al escuadron (Modificacion directa con referencia en range-based for)
     std::cout << "\n=== APLICANDO CURACION AL ESCUADRON (+20 HP) ===\n";
-    // TODO: Recorrer el escuadron por referencia modificable y curar 20 HP
-    for ( /* TODO: auto& entity */ : escuadron) {
-        entity.heal( /* TODO: 20 */ );
+    for (auto& entity : escuadron) {
+        entity.heal(20);
     }
 
     // Estado final del escuadron
