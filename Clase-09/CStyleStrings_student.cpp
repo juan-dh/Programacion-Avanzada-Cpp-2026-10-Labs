@@ -16,9 +16,11 @@ int main() {
     std::cout << "ptrLiteral:  " << ptrLiteral << " (" << sizeof(ptrLiteral) << " B puntero a .rodata)\n";
 
     // TODO: Modifica el primer carácter de bufferStack por 'Z' e imprímelo
-    // bufferStack[0] = ...
+    bufferStack[0] = 'Z';
 
     // Pregunta reflexiva: ¿Qué ocurriría si intentamos ejecutar: *ptrLiteral = 'X'; ?
+
+    //*ptrLiteral = 'X';
 
     return 0;
 }

@@ -9,12 +9,20 @@
 // TODO 1: Calcula la longitud con aritmética de punteros sin exceder maxLen
 int longitudSegura(const char* str, int maxLen) {
     // Implementar aquí
-    return 0;
+    if (!str) return 0;
+    int len = 0;
+    while (len < maxLen && *(str + len) != '\0') ++len;
+    return len;
 }
 
 // TODO 2: Copia acotada garantizando siempre el terminador '\0' en dest[destCap - 1] o antes
 void copiarCadenaSegura(char* dest, int destCap, const char* src) {
-    // Implementar aquí
+    int i = 0;
+    while (i < destCap - 1 && *(src + i) != '\0' ){
+        *(dest + i) = *(src + i);
+        ++i;
+    }
+    *(dest + i) = '\0';
 }
 
 int main() {
