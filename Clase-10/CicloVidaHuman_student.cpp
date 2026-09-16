@@ -3,10 +3,7 @@
 // Clase 10 - Ejemplo 1: El Destructor de Clase, Ámbitos y Memoria LIFO
 // Estudiante: [Tu Nombre]
 // Profesor: Juan Diego Haro (jharo@asig.com.ec)
-//
-// Compilación:
-// g++ -std=c++14 -Wall -Wextra CicloVidaHuman_student.cpp -o ciclo_vida
-// ./ciclo_vida
+
 
 #include <iostream>
 #include <string>
@@ -40,8 +37,8 @@ public:
     // Imprime un mensaje en pantalla indicando que el objeto sale de memoria.
     // Recuerda que no recibe parámetros ni tiene tipo de retorno.
     ~Human() {
-        std::cout << "[DESTRUCTOR]  Humano " << name << " (" << getStateString() 
-                  << ") saliendo de memoria\n";
+        // TODO: Imprimir mensaje del destructor
+        /* TODO */
     }
 
     const std::string& getName() const { return name; }
@@ -98,10 +95,9 @@ public:
 void patrullarSector(int ronda) {
     std::cout << "\n>>> [Patrullaje - Ronda " << ronda << "] <<<\n";
 
-    // TODO 2: Declara medicoGuardia como STATIC.
-    // Observa cómo al ser static solo se ejecuta su constructor en la Ronda 1
-    // y retiene el daño acumulado en las rondas siguientes.
-    static Human medicoGuardia("Carlos (Medico Permanente)", 90, HealthState::Healthy, 15);
+    // TODO 2: Declara medicoGuardia como STATIC para que preserve su salud entre llamadas.
+    // medicoGuardia("Carlos (Medico Permanente)", 90, HealthState::Healthy, 15);
+    /* TODO: static */ Human medicoGuardia("Carlos (Medico Permanente)", 90, HealthState::Healthy, 15);
 
     // Objeto local automático: se construye y destruye en cada invocación
     Human exploradorTemporal("Explorador de Ronda", 45, HealthState::Healthy, 20);
@@ -117,21 +113,18 @@ void patrullarSector(int ronda) {
 }
 
 int main() {
-    // TODO 3: Crea un bloque de ámbito interno {} con 3 supervivientes: h1, h2, h3.
-    // Observa en la terminal el orden inverso de destrucción LIFO (Stack Unwinding)
-    // al cruzar la llave de cierre }.
     std::cout << "--- Pila de Memoria y Orden LIFO ---\n";
+    // TODO 3: Crea un bloque de ámbito interno {} con 3 supervivientes:
+    // h1 ("Joel Miller", 100), h2 ("Ellie Williams", 80) y h3 ("Sam", 60).
+    // Observa en la terminal el orden inverso de destrucción LIFO al cruzar la llave }.
     {
-        Human h1("Joel Miller", 100);
-        Human h2("Ellie Williams", 80);
-        Human h3("Sam", 60);
+        /* TODO: Instanciar h1, h2 y h3 */
     }
 
     // TODO 4: Invoca dos veces patrullarSector(1) y patrullarSector(2)
     // para verificar la persistencia de la variable static frente a la local.
     std::cout << "\n--- Persistencia de Variable static vs Local ---\n";
-    patrullarSector(1);
-    patrullarSector(2);
+    /* TODO: Invocaciones a patrullarSector */
 
     std::cout << "\nFinalizando main(). Se destruiran objetos estaticos restantes:\n";
     return 0;
