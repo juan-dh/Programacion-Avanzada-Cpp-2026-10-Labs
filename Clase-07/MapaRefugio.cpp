@@ -232,27 +232,5 @@ int main() {
     // 4. Renderizado del mapa ampliado con emojis mediante punteros
     renderizarMapa(&mapa[0][0], FILAS * COLS, COLS);
 
-    // 5. Interaccion de entidades via punteros y transicion de estado
-    std::cout << "\n=== ENCUENTRO EN EL REFUGIO: INTERACCION VIA PUNTEROS ===\n";
-    Human joel{"Joel Miller", 80, HealthState::Healthy};
-    Human chasqueador{"Chasqueador", 100, HealthState::Zombie, 35};
-    Fruit manzanaFresca{"Manzana fresca", 20};
-
-    joel.displayCard();
-    chasqueador.displayCard();
-
-    std::cout << "\n-- Joel consume fruta del huerto antes de la incursion --\n";
-    const Fruit* ptrFruta = &manzanaFresca;
-    joel.eat(ptrFruta);
-    joel.displayCard();
-
-    std::cout << "\n-- Incursion zombie por la brecha oeste (fila 4, col 2) --\n";
-    Human* ptrZombie = &chasqueador;
-    Human* ptrHumano = &joel;
-
-    // El zombie ataca directamente mutando la salud y el estado del objetivo
-    ptrZombie->attack(ptrHumano);
-    ptrHumano->displayCard();
-
     return 0;
 }

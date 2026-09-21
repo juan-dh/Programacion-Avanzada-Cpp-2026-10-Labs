@@ -1,8 +1,13 @@
 // MapaRefugio_student.cpp
 // USFQ - Colegio de Ciencias e Ingeniería
 // CMP-2102: Programación Avanzada en C++
+// Clase 07: Punteros, Operador sizeof, Aritmética de Punteros y Array Decay
 // Estudiante: [Tu Nombre]
 // Profesor: Juan Diego Haro (jharo@asig.com.ec)
+//
+// Compilación:
+// g++ -std=c++14 -Wall -Wextra MapaRefugio_student.cpp -o mapa_student
+// ./mapa_student
 
 #include <iostream>
 #include <string>
@@ -103,26 +108,19 @@ public:
         }
     }
 
-    // TODO: Implementar metodo de consumo recibiendo un puntero a fruta constante (const Fruit* fruit)
     inline void eat(const Fruit* fruit) {
-        // TODO: Verificar que fruit != nullptr y que el estado sea Healthy o Infected antes de curar
-        if ( /* TODO */ && (state == HealthState::Healthy || state == HealthState::Infected)) {
+        if (fruit != nullptr && (state == HealthState::Healthy || state == HealthState::Infected)) {
             std::cout << "🍎 " << name << " consume una " << fruit->getType() 
                       << " y recupera " << fruit->getHealAmount() << " HP.\n";
-            // TODO: Invocar heal() pasando fruit->getHealAmount()
-            heal( /* TODO */ );
+            heal(fruit->getHealAmount());
         }
     }
 
-    // TODO: Implementar metodo de ataque a otra entidad humana (Human* entity)
     void attack(Human* entity) const {
-        // TODO: Validar que entity != nullptr y que el estado del atacante sea Zombie
-        if ( /* TODO: entity != nullptr && state == HealthState::Zombie */ ) {
+        if (entity != nullptr && state == HealthState::Zombie) {
             std::cout << "🧟 [" << name << "] incursionando por la brecha ataca a " 
                       << entity->getName() << " causando " << damage << " de dano!\n";
-            // TODO: Aplicar dano a traves del puntero entity
             entity->applyDamage(damage);
-            // TODO: Si el objetivo sobrevive pero era Healthy, infectarlo a Zombie
             if (entity->getState() == HealthState::Healthy) {
                 std::cout << "☣️  ¡" << entity->getName() << " ha sido infectado y se transforma en Zombie!\n";
                 entity->setState(HealthState::Zombie);
@@ -164,8 +162,11 @@ void renderizarMapa(const char* ptrBase, int totalCeldas, int columnas) {
     std::cout << "+------------------------------------+\n";
 
     for (int i = 0; i < totalCeldas; ++i) {
-        // TODO: Leer la celda actual usando aritmetica de punteros: *(ptrBase + i)
-        char celda = /* TODO */;
+        // =====================================================================
+        // TODO 1: Acceder al carácter de la celda actual utilizando aritmética de
+        // punteros a partir de 'ptrBase' y el índice 'i' (sin usar corchetes []).
+        // =====================================================================
+        char celda = /* TODO: desreferenciar ptrBase desplazado por i */;
 
         switch (celda) {
             case 'W': std::cout << "🪵 "; break; // Muro de madera del refugio
@@ -219,8 +220,11 @@ int main() {
     demostrarArrayDecay(mapa);
 
     // 3. Demostracion de Aritmetica de Punteros
-    // TODO: Obtener un puntero a la primera celda del mapa (&mapa[0][0])
-    const char* ptrInicio = /* TODO */;
+    // =========================================================================
+    // TODO 2: Obtener un puntero a la primera celda del bloque contiguo en memoria
+    // Guarda la dirección de memoria de la casilla [0][0] del mapa.
+    // =========================================================================
+    const char* ptrInicio = /* TODO: dirección de la celda [0][0] */;
 
     std::cout << "\n=== DEMOSTRACION DE ARITMETICA DE PUNTEROS ===\n";
     std::cout << "Direccion base del mapa:            " << static_cast<const void*>(ptrInicio) << "\n";
@@ -228,39 +232,22 @@ int main() {
     std::cout << "Direccion base + 12 (+12 bytes):    " << static_cast<const void*>(ptrInicio + COLS) << "\n";
     std::cout << "Distancia en celdas (ptr+15 - ptr): " << ((ptrInicio + 15) - ptrInicio) << " celdas\n";
 
-    // TODO: Calcular desplazamiento lineal en memoria: offset = r * COLS + c
+    // =========================================================================
+    // TODO 3: Aplanamiento bidimensional (Offset) y acceso por aritmética
+    // 1. Calcula el desplazamiento lineal (offset) para la posición [fila][col].
+    //    Recuerda que cada fila completa avanza 'COLS' elementos en memoria.
+    // 2. Desreferencia el puntero base desplazado en dicho offset sin usar corchetes.
+    // =========================================================================
     int fila = 3, col = 3;
-    int offset = /* TODO: formula fila * COLS + col */;
-    // TODO: Desreferenciar el puntero en el offset calculado
+    int offset = /* TODO: calcular offset lineal usando fila, col y COLS */;
     std::cout << "Celda en [" << fila << "][" << col << "] via *(ptrBase + offset): '" 
-              << /* TODO: *(ptrInicio + offset) */ << "'\n";
+              << /* TODO: desreferenciar ptrInicio + offset */ << "'\n";
 
-    // 4. Renderizado del mapa ampliado con emojis mediante punteros
-    // TODO: Invocar renderizarMapa pasando la direccion base (&mapa[0][0])
-    renderizarMapa( /* TODO */ , FILAS * COLS, COLS);
-
-    // 5. Interaccion de entidades via punteros y transicion de estado
-    std::cout << "\n=== ENCUENTRO EN EL REFUGIO: INTERACCION VIA PUNTEROS ===\n";
-    Human joel{"Joel Miller", 80, HealthState::Healthy};
-    Human chasqueador{"Chasqueador", 100, HealthState::Zombie, 35};
-    Fruit manzanaFresca{"Manzana fresca", 20};
-
-    joel.displayCard();
-    chasqueador.displayCard();
-
-    std::cout << "\n-- Joel consume fruta del huerto antes de la incursion --\n";
-    // TODO: Declarar puntero a fruta constante (const Fruit* ptrFruta) apuntando a &manzanaFresca
-    const Fruit* ptrFruta = /* TODO: &manzanaFresca */;
-    joel.eat(ptrFruta);
-    joel.displayCard();
-
-    std::cout << "\n-- Incursion zombie por la brecha oeste (fila 4, col 2) --\n";
-    Human* ptrZombie = &chasqueador;
-    Human* ptrHumano = &joel;
-
-    // TODO: Invocar attack a traves de ptrZombie pasando ptrHumano
-    /* TODO: ptrZombie->attack(ptrHumano) */;
-    ptrHumano->displayCard();
+    // =========================================================================
+    // TODO 4: Invocación de renderizado mediante puntero base
+    // Pasa la dirección base del mapa como primer argumento de la función.
+    // =========================================================================
+    renderizarMapa( /* TODO: puntero al inicio del mapa */ , FILAS * COLS, COLS);
 
     return 0;
 }
