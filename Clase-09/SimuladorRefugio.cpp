@@ -1,9 +1,4 @@
-// SimuladorRefugio_student.cpp
-// USFQ - Colegio de Ciencias e Ingeniería
-// CMP-2102: Programación Avanzada en C++
-// Clase 09: Simulación Autónoma del Refugio (Matriz de Punteros Human*)
-// Estudiante: [Tu Nombre]
-// Profesor: Juan Diego Haro (jharo@asig.com.ec)
+// SimuladorRefugio.cpp
 
 #include <iostream>
 #include <string>
@@ -61,7 +56,7 @@ public:
     }
 
     // Interaccion de ataque zombie via puntero mutable (Clase 7)
-    void attack(Human* target) const
+    void attack(Human *target) const
     {
         if (target != nullptr && state == HealthState::Zombie)
         {
@@ -102,7 +97,9 @@ public:
 };
 
 // Renderizado directo desde la matriz de punteros
-void renderizar(Human* const mapa[FILAS][COLS])
+// Si la celda es nullptr -> pinta suelo ("·  ")
+// Si la celda tiene un puntero -> consulta el estado del objeto y pinta su emoji
+void renderizar(Human *const mapa[FILAS][COLS])
 {
     std::cout << "\n+---------+\n";
     std::cout << "| MAPA 4x4|\n";
@@ -112,14 +109,9 @@ void renderizar(Human* const mapa[FILAS][COLS])
     {
         for (int c = 0; c < COLS; ++c)
         {
-            // =================================================================
-            // TODO 1: Si mapa[r][c] es nullptr, imprimir suelo libre ("·  ").
-            // Si mapa[r][c] != nullptr, consultar su estado de salud:
-            // imprimir "🧟 " si es Zombie, o "🧑 " si no lo es.
-            // =================================================================
             if (mapa[r][c] == nullptr)
             {
-                std::cout << "·  ";
+                std::cout << "·  "; // Suelo libre
             }
             else
             {
@@ -133,14 +125,12 @@ void renderizar(Human* const mapa[FILAS][COLS])
 
 int main()
 {
-    srand(19);
+    // Semilla determinista
+    srand(7);
 
     // =========================================================================
-    // TODO 2: PASO 1 - Instanciacion en el Stack mediante un arreglo de objetos
-    // Declarar 'Human humanos[3]' con:
-    // - Joel (80 HP, Healthy)
-    // - Ellie (70 HP, Healthy)
-    // - Chasqueador (100 HP, Zombie, 30 dano)
+    // PASO 1: Instanciacion en el Stack mediante un arreglo nativo de objetos
+    // Cada elemento posee su propia identidad e historial en memoria:
     // =========================================================================
     Human humanos[3] = {
         Human{"Joel", 80, HealthState::Healthy},
@@ -148,14 +138,11 @@ int main()
         Human{"Chasqueador", 100, HealthState::Zombie, 30}};
 
     // =========================================================================
-    // TODO 3: PASO 2 - Matriz unica de punteros Human*
-    // Declarar 'Human* mapa[FILAS][COLS] = {};' (todas las celdas en nullptr)
-    // Poblar las posiciones iniciales:
-    // - Joel en [2][1]
-    // - Ellie en [3][2]
-    // - Chasqueador en [0][2]
+    // PASO 2: Matriz unica de punteros Human* (todas las celdas en nullptr)
     // =========================================================================
     Human *mapa[FILAS][COLS] = {};
+
+    // Poblar la matriz asignando las direcciones (&) de cada objeto real
     mapa[2][1] = &humanos[0]; // Joel
     mapa[3][2] = &humanos[1]; // Ellie
     mapa[0][2] = &humanos[2]; // Chasqueador
@@ -181,55 +168,43 @@ int main()
             {
                 Human *entidad = mapa[r][c];
 
+                // Solo procesamos entidades que no hayan actuado este turno
                 if (entidad != nullptr && !movido[r][c])
                 {
                     int dir = rand() % 4;
                     int nr = r;
                     int nc = c;
 
-                    // =========================================================
-                    // TODO 4: Calcular la nueva coordenada (nr, nc) usando un switch:
-                    // case 0: nr = r - 1; break; // Arriba
-                    // case 1: nr = r + 1; break; // Abajo
-                    // case 2: nc = c - 1; break; // Izquierda
-                    // case 3: nc = c + 1; break; // Derecha
-                    // =========================================================
+                    // Desplazamiento segun la direccion aleatoria
                     switch (dir)
                     {
                     case 0:
                         nr = r - 1;
-                        break;
+                        break; // Arriba
                     case 1:
                         nr = r + 1;
-                        break;
+                        break; // Abajo
                     case 2:
                         nc = c - 1;
-                        break;
+                        break; // Izquierda
                     case 3:
                         nc = c + 1;
-                        break;
+                        break; // Derecha
                     }
 
+                    // Validar limites de la matriz
                     if (nr >= 0 && nr < FILAS && nc >= 0 && nc < COLS)
                     {
                         Human *destino = mapa[nr][nc];
 
-                        // =====================================================
-                        // TODO 5: CASO A - Suelo libre (destino == nullptr)
-                        // Trasladar el puntero de 'entidad' a mapa[nr][nc],
-                        // asignar nullptr a mapa[r][c], y marcar movido[nr][nc] = true.
-                        // =====================================================
+                        // CASO A: Suelo libre (nullptr) -> Transferencia de puntero
                         if (destino == nullptr)
                         {
                             mapa[nr][nc] = entidad;
                             mapa[r][c] = nullptr;
                             movido[nr][nc] = true;
                         }
-                        // =====================================================
-                        // TODO 6: CASO B - Colision entre humanos (destino != nullptr)
-                        // Si 'entidad' es Zombie y 'destino' es Healthy,
-                        // invocar el ataque: entidad->attack(destino);
-                        // =====================================================
+                        // CASO B: Colision entre humanos -> Ataque si es Zombie contra Healthy
                         else
                         {
                             if (entidad->getState() == HealthState::Zombie &&
