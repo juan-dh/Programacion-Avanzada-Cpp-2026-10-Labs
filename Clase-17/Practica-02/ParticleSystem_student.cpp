@@ -1,7 +1,7 @@
 // ParticleSystem_student.cpp
 // USFQ - Colegio de Ciencias e Ingeniería
 // CMP-2102: Programación Avanzada en C++
-// Clase 16: Composición, Operadores de Flujo, Amistad y Miembros Estáticos
+// Clase 17 - Práctica 2: Sistema de Partículas
 // Estudiante: [Tu Nombre]
 // Profesor: Juan Diego Haro (jharo@asig.com.ec)
 

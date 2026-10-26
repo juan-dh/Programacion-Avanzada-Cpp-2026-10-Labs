@@ -1,36 +1,15 @@
 // Particle.cpp
 // USFQ - Colegio de Ciencias e Ingeniería
 // CMP-2102: Programación Avanzada en C++
-// Clase 17: Miembros Estáticos, Composición y Gestión Dinámica de Memoria
+// Clase 17 - Práctica 2: Sistema de Partículas
 // Profesor: Juan Diego Haro (jharo@asig.com.ec)
 
 #include "Particle.h"
-#include <cmath>
-
-// Inicialización obligatoria de la variable estática fuera de la clase (Regla ODR)
-float Particle::maxSpeed = 8.0f;
-
-void Particle::setMaxSpeed(float s) {
-    if (s < 0.5f) {
-        maxSpeed = 0.5f; // Límite inferior de seguridad
-    } else if (s > 25.0f) {
-        maxSpeed = 25.0f; // Límite superior de seguridad
-    } else {
-        maxSpeed = s;
-    }
-}
 
 Particle::Particle(float startX, float startY, float vx, float vy, float r, ofColor c)
     : position(startX, startY), velocity(vx, vy), radius(r), color(c) {}
 
 void Particle::update() {
-    // Verificamos y limitamos la rapidez según el límite estático global
-    float speedSq = velocity.getX() * velocity.getX() + velocity.getY() * velocity.getY();
-    if (speedSq > maxSpeed * maxSpeed && speedSq > 0.0001f) {
-        float currentSpeed = std::sqrt(speedSq);
-        velocity = velocity * (maxSpeed / currentSpeed);
-    }
-
     position += velocity; // Actualización in-place
 }
 

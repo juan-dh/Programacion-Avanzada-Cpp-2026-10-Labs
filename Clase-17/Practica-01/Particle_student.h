@@ -1,7 +1,7 @@
 // Particle_student.h
 // USFQ - Colegio de Ciencias e Ingeniería
 // CMP-2102: Programación Avanzada en C++
-// Clase 17: Miembros Estáticos, Composición y Gestión Dinámica de Memoria
+// Clase 17 - Práctica 1: Miembros Estáticos y Límite de Rapidez Global
 // Estudiante: [Tu Nombre]
 // Profesor: Juan Diego Haro (jharo@asig.com.ec)
 

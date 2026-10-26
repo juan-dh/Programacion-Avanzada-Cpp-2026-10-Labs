@@ -1,7 +1,7 @@
 // Vector2D.h
 // USFQ - Colegio de Ciencias e Ingeniería
 // CMP-2102: Programación Avanzada en C++
-// Clase 16: Composición, Operadores de Flujo, Amistad y Miembros Estáticos
+// Clase 17 - Práctica 1: Miembros Estáticos y Límite de Rapidez Global
 // Profesor: Juan Diego Haro (jharo@asig.com.ec)
 
 #ifndef VECTOR2D_H

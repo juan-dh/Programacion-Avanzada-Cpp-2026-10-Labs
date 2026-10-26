@@ -1,7 +1,7 @@
 // ofApp_student.cpp
 // USFQ - Colegio de Ciencias e Ingeniería
 // CMP-2102: Programación Avanzada en C++
-// Clase 17: Miembros Estáticos, Composición y Gestión Dinámica de Memoria
+// Clase 17 - Práctica 1: Miembros Estáticos y Límite de Rapidez Global
 // Estudiante: [Tu Nombre]
 // Profesor: Juan Diego Haro (jharo@asig.com.ec)
 
@@ -9,22 +9,23 @@
 #include <iostream>
 
 void ofApp::setup() {
-    ofSetWindowTitle("Clase 17 - Miembros Estáticos y Sistema de Partículas");
+    ofSetWindowTitle("Clase 17 - Práctica 1: Miembros Estáticos con Dos Partículas");
     ofSetFrameRate(60);
     ofBackground(18, 22, 28);
 
-    // TODO: Inicialización del sistema de partículas y emisión
-    // 1. Instancia 'system' en el centro de la pantalla (ofGetWidth() / 2.0f, ofGetHeight() / 2.0f).
-    // 2. Mediante un bucle, añade 35 partículas llamando a system.addParticle().
-    // 3. Imprime en consola el origen de 'system' con operator<< y la rapidez con Particle::getMaxSpeed().
+    // TODO: Inicialización de las dos partículas
+    // 1. Inicializa particle1 con posición (200, 150), velocidad (6, 4), radio 20, y color cian ofColor(6, 182, 212).
+    // 2. Inicializa particle2 con posición (500, 350), velocidad (-5, 5), radio 18, y color naranja ofColor(249, 115, 22).
+    // 3. Imprime en consola la velocidad máxima global compartida usando Particle::getMaxSpeed().
     // === TU CODIGO EMPIEZA AQUI ===
 
     // === TU CODIGO TERMINA AQUI ===
 }
 
 void ofApp::update() {
-    // TODO: Actualización de la simulación
-    // Invoca system.update(ofGetWidth(), ofGetHeight()); para actualizar la cinemática coordinada.
+    // TODO: Actualización y verificación de bordes de las dos partículas
+    // 1. Invoca update() y checkEdges(ofGetWidth(), ofGetHeight()) sobre particle1.
+    // 2. Invoca update() y checkEdges(ofGetWidth(), ofGetHeight()) sobre particle2.
     // === TU CODIGO EMPIEZA AQUI ===
 
     // === TU CODIGO TERMINA AQUI ===
@@ -33,8 +34,8 @@ void ofApp::update() {
 void ofApp::draw() {
     ofBackground(18, 22, 28);
 
-    // TODO: Renderizado del sistema
-    // Renderiza el emisor llamando a system.draw().
+    // TODO: Dibujar las partículas
+    // Invoca show() sobre particle1 y particle2.
     // === TU CODIGO EMPIEZA AQUI ===
 
     // === TU CODIGO TERMINA AQUI ===
@@ -42,9 +43,8 @@ void ofApp::draw() {
 
 void ofApp::keyPressed(int key) {
     // TODO: Interacción con el teclado para modificar el miembro estático
-    // 1. Si key == '+' o OF_KEY_UP: aumenta Particle::setMaxSpeed en 1.0f.
-    // 2. Si key == '-' o OF_KEY_DOWN: reduce Particle::setMaxSpeed en 1.0f.
-    // 3. Si key == 'r' o 'R': restablece Particle::setMaxSpeed a 8.0f.
+    // 1. Si key == OF_KEY_UP: aumenta Particle::setMaxSpeed en 1.0f.
+    // 2. Si key == OF_KEY_DOWN: reduce Particle::setMaxSpeed en 1.0f.
     // === TU CODIGO EMPIEZA AQUI ===
 
     // === TU CODIGO TERMINA AQUI ===
