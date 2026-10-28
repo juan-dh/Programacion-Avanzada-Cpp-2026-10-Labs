@@ -19,7 +19,7 @@ private:
 
 public:
     ParticleSystem() = default;
-    ParticleSystem(const Vector2D& startOrigin);
+    ParticleSystem(const Vector2D& startOrigin) : origin(startOrigin) {}
     ~ParticleSystem(); // Destructor para evitar fugas de memoria
 
     void addParticle(float x, float y);
