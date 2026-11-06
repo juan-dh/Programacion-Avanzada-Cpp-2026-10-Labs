@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100" height="100" viewBox="0 0 100 100">
+  <!-- Path 0: Cuerpo ameboide e irregular del Blob (color dinamico en C++) -->
+  <path d="M 58,10 C 65,11 70,19 76,24 C 82,29 92,36 93,42 C 94,48 81,55 80,62 C 79,69 93,79 88,84 C 83,89 64,91 52,91 C 40,91 19,91 14,85 C 9,79 25,65 24,56 C 23,48 8,40 10,34 C 12,28 26,22 34,18 C 42,14 51,9 58,10 Z" fill="#ffffff" stroke="#333333" stroke-width="4"/>
+  <!-- Ojo izquierdo -->
+  <path d="M 42,32 C 47,32 51,36 51,41 C 51,46 47,50 42,50 C 37,50 33,46 33,41 C 33,36 37,32 42,32 Z" fill="#ffffff" stroke="#333333" stroke-width="2"/>
+  <!-- Ojo derecho -->
+  <path d="M 66,32 C 71,32 75,36 75,41 C 75,46 71,50 66,50 C 61,50 57,46 57,41 C 57,36 61,32 66,32 Z" fill="#ffffff" stroke="#333333" stroke-width="2"/>
+  <!-- Pupila izquierda -->
+  <path d="M 43,38 C 46,38 48,40 48,43 C 48,46 46,48 43,48 C 40,48 38,46 38,43 C 38,40 40,38 43,38 Z" fill="#222222"/>
+  <!-- Pupila derecha -->
+  <path d="M 67,38 C 70,38 72,40 72,43 C 72,46 70,48 67,48 C 64,48 62,46 62,43 C 62,40 64,38 67,38 Z" fill="#222222"/>
+</svg>
